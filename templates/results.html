@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes From Refrigerator</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<html class="yes_slide">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Recipes From Refrigerator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+
+    <link href='../static/css/styles.css' rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+</head>
+<body>
+
+<br>
+<br>
+
+<div class="row">
+
+    <div class="col-md-1"></div>
+
+
+    <div class="col-md-1">
+        <a href="{{ url_for('index') }}">
+            <button class="button">Back</button>
+        </a>
+    </div>
+
+
+</div>
+
+<br>
+<h1>
+    Food Network
+
+</h1>
+<h4 class="col-md-6">
+    Recipe name and chef of recipe is in the link itself
+</h4>
+<ol>
+
+    {%for i in range(0, fn_links_length)%}
+
+    <li><a href="{{fn_list_of_links[i]}}" target="_blank">{{fn_list_of_links[i]}}</a></li>
+
+    {%endfor%}
+
+</ol>
+
+<br>
+<br>
+
+<h1>
+    Epicurious
+</h1>
+<h4 class="col-md-6">
+    Recipe name is in the link itself
+</h4>
+<ol>
+
+    {%for i in range(0, ep_links_length)%}
+
+    <li><a href={{ep_list_of_links[i]}} target="_blank">{{ep_list_of_links[i]}}</a></li>
+
+    {%endfor%}
+
+</ol>
+
+<br>
+<br>
+
+<h1>
+    Allrecipes
+</h1>
+<h4 class="col-md-6">
+    Recipe name is in the link itself
+</h4>
+<ol>
+
+    {%for i in range(0, ar_links_length)%}
+
+    <li><a href={{ar_list_of_links[i]}} target="_blank">{{ar_list_of_links[i]}}</a></li>
+
+    {%endfor%}
+
+</ol>
+
+</body>
+</html>
