@@ -381,7 +381,7 @@ ul {
   justify-content: center;
 }
 
-.clear_button, .button{
+.clear_button, .button, .recipe_button{
   width: 140px;
   height: 45px;
   font-family: 'Roboto', sans-serif;
@@ -399,7 +399,7 @@ ul {
   outline: none;
   }
 
-.clear_button:hover, .button:hover {
+.clear_button:hover, .button:hover, .recipe_button:hover{
   background-color: #2EE59D;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
