@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="yes_slide">
 <head>
     <meta charset="UTF-8">
     <title>Recipes From Refrigerator</title>
-</head>
-<body>
 
-</body>
-</html>
-
-<html class="yes_slide">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,10 +14,9 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
 
     <link href='../static/css/styles.css' rel="stylesheet" type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href='../static/css/bootstrap.min.css' rel="stylesheet" type='text/css'>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-
+    <script src="../static/scripts/jquery-3.5.1.min.js"></script>
 
 </head>
 <body>
@@ -51,14 +43,12 @@
     Food Network
 
 </h1>
-<h4 class="col-md-6">
-    Recipe name and chef of recipe is in the link itself
-</h4>
+
 <ol>
 
-    {%for i in range(0, fn_links_length)%}
+    {%for i in range(0, fn_urls_length)%}
 
-    <li><a href="{{fn_list_of_links[i]}}" target="_blank">{{fn_list_of_links[i]}}</a></li>
+    <li><a href="{{fn_recipe_urls[i]}}" target="_blank">{{fn_recipe_names[i]}}</a></li>
 
     {%endfor%}
 
@@ -70,14 +60,12 @@
 <h1>
     Epicurious
 </h1>
-<h4 class="col-md-6">
-    Recipe name is in the link itself
-</h4>
+
 <ol>
 
-    {%for i in range(0, ep_links_length)%}
+    {%for i in range(0, ep_urls_length)%}
 
-    <li><a href={{ep_list_of_links[i]}} target="_blank">{{ep_list_of_links[i]}}</a></li>
+    <li><a href={{ep_recipe_urls[i]}} target="_blank">{{ep_recipe_names[i]}}</a></li>
 
     {%endfor%}
 
@@ -89,14 +77,12 @@
 <h1>
     Allrecipes
 </h1>
-<h4 class="col-md-6">
-    Recipe name is in the link itself
-</h4>
+
 <ol>
 
-    {%for i in range(0, ar_links_length)%}
+    {%for i in range(0, ar_urls_length)%}
 
-    <li><a href={{ar_list_of_links[i]}} target="_blank">{{ar_list_of_links[i]}}</a></li>
+    <li><a href={{ar_recipe_urls[i]}} target="_blank">{{ar_recipe_names[i]}}</a></li>
 
     {%endfor%}
 
