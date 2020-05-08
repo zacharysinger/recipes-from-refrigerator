@@ -30,12 +30,36 @@ class Retriever:
         Sorting by allrecipes default sorter when using ingredient search
         """
 
+        recipe_urls = []
+        # img_urls = []
+        recipe_names = []
+
+        counter = 0
+        limit = 10
+
         url = f"https://allrecipes.com/search/results/?ingIncl={','.join(self.ingredients)}&sort=re"
         html = requests.get(url, headers=Retriever.HTTP_HEADERS)
-
         soup = BeautifulSoup(html.text, "html.parser")
 
-        return [product['href'] for product in soup.find_all("a", "fixed-recipe-card__title-link", href=True)]
+        for a in soup.find_all("a", "fixed-recipe-card__title-link", href=True):
+            recipe_urls.append(a["href"])
+            counter += 1
+            if counter == limit:
+                break
+
+        # for b in soup.find_all("img", "fixed-recipe-card__img"):
+        #     img_urls.append(b.get("data-original-src"))
+        #     counter += 1
+        #     if counter == limit:
+        #         break
+
+        for c in soup.find_all("span", "fixed-recipe-card__title-link"):
+            recipe_names.append(c.text.strip())
+            counter += 1
+            if counter == limit:
+                break
+
+        return recipe_urls, recipe_names
 
     def foodnetwork(self):
         """
@@ -43,12 +67,36 @@ class Retriever:
         food network already sorts their own recipes by their famous chefs
         """
 
+        recipe_urls = []
+        # img_urls = []
+        recipe_names = []
+
+        counter = 0
+        limit = 10
+
         url = f"https://www.foodnetwork.com/search/{'-'.join(self.ingredients)}-"
         html = requests.get(url, headers=Retriever.HTTP_HEADERS)
-
         soup = BeautifulSoup(html.text, "html.parser")
 
-        return ['https:' + product['href'] for product in soup.find_all("a", "m-Rating__a-StarsLink", href=True)]
+        for a in soup.find_all("a", "m-Rating__a-StarsLink", href=True):
+            recipe_urls.append('https:' + a['href'])
+            counter += 1
+            if counter == limit:
+                break
+
+        # for b in soup.find_all("img", "m-MediaBlock__a-Image"):
+        #     img_urls.append(b.get("src"))
+        #     counter += 1
+        #     if counter == limit:
+        #         break
+
+        for c in soup.find_all("span", "m-MediaBlock__a-HeadlineText"):
+            recipe_names.append(c.text.strip())
+            counter += 1
+            if counter == limit:
+                break
+
+        return recipe_urls, recipe_names
 
     def epicurious(self):
         """
@@ -56,21 +104,52 @@ class Retriever:
         Sorting by most rated and only pulling recipes that are above 80% make it again
         """
 
+        recipe_urls = []
+        # img_urls = []
+        recipe_names = []
+
+        counter = 0
+        limit = 10
+
         url = f"https://www.epicurious.com/search/?sort=mostReviewed&include={'%2C'.join(self.ingredients)}"
         html = requests.get(url, headers=Retriever.HTTP_HEADERS)
-
         soup = BeautifulSoup(html.text, "html.parser")
 
-        return [('https://www.epicurious.com' + product['href']) for product in
-                soup.find_all("a", "show-quick-view", href=True)]
+        for a in soup.find_all("a", "show-quick-view", href=True):
+            recipe_urls.append('https://www.epicurious.com' + a['href'])
+            counter += 1
+            if counter == limit:
+                break
+
+        # epicurious photos do not work since they are added to the site with JS after load
+
+        # for b in soup.find_all("a", "photo-link", href=True):
+        #     photo_url = 'https://www.epicurious.com' + b['href']
+        #     new_html = requests.get(photo_url, headers=Retriever.HTTP_HEADERS)
+        #     new_soup = BeautifulSoup(new_html.text, "html.parser")
+        #     for z in new_soup.find_all("img", "photoloaded"):
+        #         img_urls.append(z.get("srcset"))
+
+        for c in soup.find_all("h4", "hed"):
+            for z in c.find_all("a"):
+                recipe_names.append(z.text.strip())
+                counter += 1
+                if counter == limit:
+                    break
+
+        return recipe_urls, recipe_names
 
     def __call__(self, handlers):
         """
         This calls the associated handlers with those passed in and returns the results in a dictionary
         :param handlers :list of string handlers to return results from
         """
-        recipes = {}
+        recipe_urls = {}
+        # img_urls = {}
+        recipe_names = {}
         for handler in handlers:
-            recipes[handler] = self.handlers[handler]()
+            recipe_urls[handler] = self.handlers[handler]()
+            # img_urls[handler] = self.handlers[handler]()
+            recipe_names[handler] = self.handlers[handler]()
 
-        return recipes
+        return recipe_urls, recipe_names
