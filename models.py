@@ -19,7 +19,9 @@ class Recipes(Base):
     __tablename__ = 'recipes'
 
     ingredients = Column(String(10000), primary_key=True)
+    recipe_name = Column(String(10000))
     source = Column(String(20))
+
     url = Column(CLOB)
 
     __table_args__ = (
