@@ -34,7 +34,8 @@ class Retriever:
         # img_urls = []
         recipe_names = []
 
-        counter = 0
+        link_counter = 0
+        name_counter = 0
         limit = 10
 
         url = f"https://allrecipes.com/search/results/?ingIncl={','.join(self.ingredients)}&sort=re"
@@ -43,8 +44,8 @@ class Retriever:
 
         for a in soup.find_all("a", "fixed-recipe-card__title-link", href=True):
             recipe_urls.append(a["href"])
-            counter += 1
-            if counter == limit:
+            link_counter += 1
+            if link_counter == limit:
                 break
 
         # for b in soup.find_all("img", "fixed-recipe-card__img"):
@@ -55,8 +56,8 @@ class Retriever:
 
         for c in soup.find_all("span", "fixed-recipe-card__title-link"):
             recipe_names.append(c.text.strip())
-            counter += 1
-            if counter == limit:
+            name_counter += 1
+            if name_counter == limit:
                 break
 
         return recipe_urls, recipe_names
@@ -71,7 +72,8 @@ class Retriever:
         # img_urls = []
         recipe_names = []
 
-        counter = 0
+        link_counter = 0
+        name_counter = 0
         limit = 10
 
         url = f"https://www.foodnetwork.com/search/{'-'.join(self.ingredients)}-"
@@ -80,8 +82,8 @@ class Retriever:
 
         for a in soup.find_all("a", "m-Rating__a-StarsLink", href=True):
             recipe_urls.append('https:' + a['href'])
-            counter += 1
-            if counter == limit:
+            link_counter += 1
+            if link_counter == limit:
                 break
 
         # for b in soup.find_all("img", "m-MediaBlock__a-Image"):
@@ -92,8 +94,8 @@ class Retriever:
 
         for c in soup.find_all("span", "m-MediaBlock__a-HeadlineText"):
             recipe_names.append(c.text.strip())
-            counter += 1
-            if counter == limit:
+            name_counter += 1
+            if name_counter == limit:
                 break
 
         return recipe_urls, recipe_names
@@ -108,7 +110,8 @@ class Retriever:
         # img_urls = []
         recipe_names = []
 
-        counter = 0
+        link_counter = 0
+        name_counter = 0
         limit = 10
 
         url = f"https://www.epicurious.com/search/?sort=mostReviewed&include={'%2C'.join(self.ingredients)}"
@@ -117,8 +120,8 @@ class Retriever:
 
         for a in soup.find_all("a", "show-quick-view", href=True):
             recipe_urls.append('https://www.epicurious.com' + a['href'])
-            counter += 1
-            if counter == limit:
+            link_counter += 1
+            if link_counter == limit:
                 break
 
         # epicurious photos do not work since they are added to the site with JS after load
@@ -133,8 +136,8 @@ class Retriever:
         for c in soup.find_all("h4", "hed"):
             for z in c.find_all("a"):
                 recipe_names.append(z.text.strip())
-                counter += 1
-                if counter == limit:
+                name_counter += 1
+                if name_counter == limit:
                     break
 
         return recipe_urls, recipe_names
