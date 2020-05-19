@@ -11,7 +11,7 @@ function cycleBackgrounds() {
         // Hide the previous image.
         $imageEls.eq(index - 1).removeClass('show');
 
-        }, 5000);  // the time
+        }, 4500);  // the time
     }
 
     $(function () {
