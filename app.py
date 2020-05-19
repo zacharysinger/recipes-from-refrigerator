@@ -35,8 +35,6 @@ def result_handler():
     Adds request data into sqlite database
     First pulls data in database, but if request ingredients are not in database ingredients,
         pulls from request URL and adds to database
-
-    just use mongo db
     """
     desired_handlers = ['allrecipes', 'foodnetwork', 'epicurious']
     user_ingredients = [request.form[task] for task in request.form]
