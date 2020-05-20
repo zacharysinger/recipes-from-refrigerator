@@ -230,6 +230,10 @@ li{
     list-style: none;
 }
 
+.back_button{
+    position: fixed;
+}
+
 button{
     padding: 0;
     border: none;
@@ -415,7 +419,7 @@ a,a:visited,a:hover,a:active{
 	position:relative;
   transition:0.5s color ease;
 	text-decoration:none;
-	color:#81b3d2;
+	color:white;
 	font-size:2.5em;
 }
 
@@ -476,13 +480,18 @@ a.before:hover:before,a.after:hover:after{
 
 .entry-title {
     font-size: 50px;
-    font-weight: 500;
+    font-weight: bold;
     margin: 20px 0;
     border-top: 2px solid lightseagreen;
     border-bottom: 2px solid lightseagreen;
     line-height: 1.4;
     padding: 10px 0;
-    background-image: -webkit-gradient(linear,25% 0%,25% 100%,from(royalblue),to(lightgreen));
+    background-color: #199FF9;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.background {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
