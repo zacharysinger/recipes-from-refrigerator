@@ -482,13 +482,8 @@ a.before:hover:before,a.after:hover:after{
     font-size: 50px;
     font-weight: bold;
     margin: 20px 0;
-    border-top: 2px solid lightseagreen;
-    border-bottom: 2px solid lightseagreen;
-    line-height: 1.4;
-    padding: 10px 0;
-    background-color: #199FF9;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #199FF9;
+
 }
 .background {
   background-image: url("../images/background.jpg");
