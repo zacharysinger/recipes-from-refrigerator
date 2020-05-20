@@ -19,30 +19,30 @@
     <script src="../static/scripts/jquery-3.5.1.min.js"></script>
 
 </head>
-<body>
+<body class="background">
 
 <!-- add in table of contents for food network, epicurious, and all recipes
     that moves with the screen so it is easy to access, either have back button always
     move with screen or have it part of side bar with contents
+
+    on index page can also have a loading bar if it is not already in database
 -->
 
-<br>
 <br>
 
 <div class="row">
 
     <div class="col-md-1"></div>
 
-
     <div class="col-md-1">
         <a href="{{ url_for('index') }}">
-            <button class="button">Back</button>
+            <button class="button back_button">Back</button>
         </a>
     </div>
 
-
 </div>
 
+<br>
 <br>
 
 <h1 class="center entry-title">
