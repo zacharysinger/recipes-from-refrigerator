@@ -35,8 +35,6 @@ def result_handler():
     Adds request data into sqlite database
     First pulls data in database, but if request ingredients are not in database ingredients,
         pulls from request URL and adds to database
-
-    just use mongo db
     """
     desired_handlers = ['allrecipes', 'foodnetwork', 'epicurious']
     user_ingredients = [request.form[task] for task in request.form]
@@ -60,16 +58,16 @@ def result_handler():
 
     else:
         ar_recipe_links = list(Retriever(ingredients)(desired_handlers)[0]['allrecipes'])
-        ar_recipe_urls = [i for i in ar_recipe_links[0]]
-        ar_recipe_names = [i for i in ar_recipe_links[1]]
+        ar_recipe_urls = ar_recipe_links[0]
+        ar_recipe_names = ar_recipe_links[1]
 
         fn_recipe_links = list(Retriever(ingredients)(desired_handlers)[0]['foodnetwork'])
-        fn_recipe_urls = [i for i in fn_recipe_links[0]]
-        fn_recipe_names = [i for i in fn_recipe_links[1]]
+        fn_recipe_urls = fn_recipe_links[0]
+        fn_recipe_names = fn_recipe_links[1]
 
         ep_recipe_links = list(Retriever(ingredients)(desired_handlers)[0]['epicurious'])
-        ep_recipe_urls = [i for i in ep_recipe_links[0]]
-        ep_recipe_names = [i for i in ep_recipe_links[1]]
+        ep_recipe_urls = ep_recipe_links[0]
+        ep_recipe_names = ep_recipe_links[1]
 
         ingredient_add = Recipes(ingredients=str(ingredients), ar_recipe_url=str(ar_recipe_urls),
                                  ar_recipe_name=str(ar_recipe_names), fn_recipe_url=str(fn_recipe_urls),
