@@ -490,3 +490,9 @@ a.before:hover:before,a.after:hover:after{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.logo {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+}
