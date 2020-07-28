@@ -32,7 +32,8 @@ def result_handler():
     ingredients = []
 
     for i in sorted(user_ingredients):
-        j = i.replace(' ', '')
+        a = i.lower()
+        j = a.replace(' ', '')
         ingredients.append(j)
 
     exists = DBSession.query(Recipes).get(str(ingredients))
