@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="yes_slide">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes From Refrigerator</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Recipes From Refrigerator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+
+    <link href='../static/css/bootstrap.min.css' rel="stylesheet" type='text/css'>
+    <link href='../static/css/mobileStyles.css' rel="stylesheet" type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/logo.ico"/>
+
+    <script src="../static/scripts/jquery-3.5.1.min.js"></script>
+
+</head>
+<body class="background">
+
+<div class="row">
+
+    <div class="col-md-4">
+        <a href="{{ url_for('mobile') }}">
+            <button class="button back_button">Back</button>
+        </a>
+    </div>
+
+    <div class="col-md-7"></div>
+
+    <div class="col-md-1">
+        <a href="{{ url_for('mobile') }}">
+            <img src="../static/images/logo_image.png" class="logo" alt="logo" WIDTH="45" HEIGHT="45">
+        </a>
+    </div>
+
+</div>
+
+<br>
+
+<h1 class="center entry-title">
+    Food Network
+</h1>
+
+<ol>
+
+    {%for i in range(0, fn_urls_length)%}
+
+    <div class="center">
+        <div class="wrapper">
+            <li><a class="eighth before after" href={{fn_recipe_urls[i]}} target="_blank">{{fn_recipe_names[i]}}</a></li>
+        </div>
+    </div>
+
+    {%endfor%}
+
+</ol>
+
+<br>
+<br>
+
+<h1 class="center entry-title">
+    Epicurious
+</h1>
+
+<ol>
+
+    {%for i in range(0, ep_urls_length)%}
+
+    <div class="center">
+        <div class="wrapper">
+            <li><a class="eighth before after" href={{ep_recipe_urls[i]}} target="_blank">{{ep_recipe_names[i]}}</a></li>
+        </div>
+    </div>
+
+    {%endfor%}
+
+</ol>
+
+<br>
+<br>
+
+<h1 class="center entry-title">
+    Allrecipes
+</h1>
+
+
+<ol>
+
+    {%for i in range(0, ar_urls_length)%}
+
+    <div class="center">
+        <div class="wrapper">
+            <li><a class="eighth before after" href={{ar_recipe_urls[i]}} target="_blank">{{ar_recipe_names[i]}}</a></li>
+        </div>
+    </div>
+
+    {%endfor%}
+
+</ol>
+
+<section class="greySection2">
+    <div class="center" style="font-family: 'Quicksand', 'sans-serif'; color: white">
+        © Copyright 2020 Zachary Singer. All rights reserved.
+    </div>
+</section>
+
+</body>
+</html>
