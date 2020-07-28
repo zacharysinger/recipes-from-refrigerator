@@ -20,6 +20,8 @@
     <script src="../static/scripts/jquery-3.5.1.min.js"></script>
     <script src="../static/scripts/auto_slide.js"></script>
 
+    <script src="../static/scripts/detectmobilebrowser.js"></script>
+
 </head>
 <body>
 
@@ -37,6 +39,21 @@
 </div>
 
 <br>
+
+<div id="cover-spin">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="center modalTitle">
+        Scraping the Internet for Valid Recipes...
+    </div>
+
+</div>
 
 <div class="row">
     <div class="col-md-11"></div>
@@ -95,12 +112,18 @@
 
         <form action="/results" method="post" id="hidden_form">
 
-            <button class="button" type='submit'>Find Recipe</button>
+            <button class="button" type='submit' onclick="$('#cover-spin').show(0)">Find Recipe</button>
 
         </form>
 
     </div>
 </div>
+
+<section class="greySection">
+    <div class="center" style="font-family: 'Quicksand', 'sans-serif'; color: white">
+        © Copyright 2020 Zachary Singer. All rights reserved.
+    </div>
+</section>
 
 </body>
 <script src="../static/scripts/list_ingredients.js"></script>
