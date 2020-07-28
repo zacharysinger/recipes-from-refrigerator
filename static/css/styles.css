@@ -483,8 +483,15 @@ a.before:hover:before,a.after:hover:after{
     font-weight: bold;
     margin: 20px 0;
     color: #199FF9;
-
 }
+
+.entry-title2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #199FF9;
+}
+
 .background {
   background-image: url("../images/background.jpg");
   background-repeat: no-repeat;
