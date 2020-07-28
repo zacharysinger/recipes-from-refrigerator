@@ -20,15 +20,6 @@ APP = Flask(__name__)
 DBSession = sessionmaker(bind=Engine)()
 
 
-@APP.route('/', methods=['GET'])
-def index():
-    """
-    User facing form flask method
-    """
-    return render_template('index.html')
-
-
-@APP.route('/results', methods=['POST'])
 def result_handler():
     """
     Post handler for request data
@@ -76,6 +67,29 @@ def result_handler():
         DBSession.add(ingredient_add)
         DBSession.commit()
 
+    return ar_recipe_urls, ar_recipe_names, fn_recipe_urls, fn_recipe_names, ep_recipe_urls, ep_recipe_names
+
+
+@APP.route('/', methods=['GET'])
+def index():
+    """
+    User facing form flask method
+    """
+    return render_template('index.html')
+
+
+@APP.route('/results', methods=['POST'])
+def results():
+    """
+    Runs result_handler function
+    """
+    result = result_handler()
+    ar_recipe_urls = result[0]
+    ar_recipe_names = result[1]
+    fn_recipe_urls = result[2]
+    fn_recipe_names = result[3]
+    ep_recipe_urls = result[4]
+    ep_recipe_names = result[5]
     return render_template('results.html', ar_recipe_urls=ar_recipe_urls, ar_urls_length=len(ar_recipe_urls),
                            ar_recipe_names=ar_recipe_names, fn_recipe_urls=fn_recipe_urls,
                            fn_urls_length=len(fn_recipe_urls), fn_recipe_names=fn_recipe_names,
@@ -90,6 +104,45 @@ def recipes():
     Recipes by: _______
     """
     return render_template('recipes.html')
+
+
+@APP.route('/mobile', methods=['GET'])
+def mobile():
+    """
+    Mobile Version
+    User facing form flask method
+    """
+    return render_template('mobile.html')
+
+
+@APP.route('/mobileResults', methods=['POST'])
+def mobile_result_handler():
+    """
+    Mobile Version
+    Runs result_handler function
+    """
+    result = result_handler()
+    ar_recipe_urls = result[0]
+    ar_recipe_names = result[1]
+    fn_recipe_urls = result[2]
+    fn_recipe_names = result[3]
+    ep_recipe_urls = result[4]
+    ep_recipe_names = result[5]
+    return render_template('mobileResults.html', ar_recipe_urls=ar_recipe_urls, ar_urls_length=len(ar_recipe_urls),
+                           ar_recipe_names=ar_recipe_names, fn_recipe_urls=fn_recipe_urls,
+                           fn_urls_length=len(fn_recipe_urls), fn_recipe_names=fn_recipe_names,
+                           ep_recipe_urls=ep_recipe_urls, ep_urls_length=len(ep_recipe_urls),
+                           ep_recipe_names=ep_recipe_names)
+
+
+@APP.route('/mobileRecipes', methods=['GET'])
+def mobile_recipes():
+    """
+    Mobile Version
+    Displays special recipes inputted by me
+    Recipes by: _______
+    """
+    return render_template('mobileRecipes.html')
 
 
 if __name__ == '__main__':
