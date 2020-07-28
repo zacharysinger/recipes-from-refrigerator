@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="yes_slide">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes From Refrigerator</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Recipes From Refrigerator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+
+    <link href='../static/css/bootstrap.min.css' rel="stylesheet" type='text/css'>
+    <link href='../static/css/mobileStyles.css' rel="stylesheet" type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/logo.ico"/>
+
+    <script src="../static/scripts/jquery-3.5.1.min.js"></script>
+
+</head>
+<body class="background">
+
+<div class="row">
+
+    <div class="col-md-4">
+        <a href="{{ url_for('mobile') }}">
+            <button class="button back_button">Back</button>
+        </a>
+    </div>
+
+    <div class="col-md-7"></div>
+
+    <div class="col-md-1">
+        <a href="{{ url_for('mobile') }}">
+            <img src="../static/images/logo_image.png" class="logo" alt="logo" WIDTH="45" HEIGHT="45">
+        </a>
+    </div>
+
+</div>
+
+<h1 class="center entry-title">
+    Special Contributed Recipes
+</h1>
+
+<div class="center">
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/1Broccolini.pdf" target="_blank">Broccolini with Sesame Sauce and Lemon</a>
+    </div>
+
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/2Cookies.pdf" target="_blank">Cherry-Chocolate Chunk Cookies</a>
+    </div>
+
+
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/3Quiche.pdf" target="_blank">Crustless Crab Quiche</a>
+    </div>
+
+
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/4PorkStew.pdf" target="_blank">Santa Fe Pork Stew</a>
+    </div>
+
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/5ShrimpLinguine.pdf" target="_blank">Shrimp Scampi With Linguine</a>
+    </div>
+
+    <div class="wrapper">
+        <a class="eighth before after" href="../static/recipes/6Salmon.pdf" target="_blank">Smoked Salmon Caper Whip</a>
+    </div>
+
+</div>
+
+<section class="greySection2">
+    <div class="center" style="font-family: 'Quicksand', 'sans-serif'; color: white">
+        © Copyright 2020 Zachary Singer. All rights reserved.
+    </div>
+</section>
+
+
+</body>
+</html>
