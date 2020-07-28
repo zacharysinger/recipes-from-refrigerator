@@ -486,12 +486,13 @@ a.before:hover:before,a.after:hover:after{
     font-weight: bold;
     margin: 20px 0;
     color: #199FF9;
-
 }
-.background {
-  background-image: url("../images/background.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+
+.entry-title2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #199FF9;
 }
 
 .logo {
@@ -563,3 +564,15 @@ a.before:hover:before,a.after:hover:after{
     z-index: 2;
 }
 
+#outer_wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.solo_background {
+    background-color: #3BF39D;
+}
