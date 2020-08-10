@@ -200,12 +200,25 @@ var MainController = function (TodoCtrl, UICtrl) {
         arr = []
     });
 
-    $.post("/index", {
-        canvas_data: JSON.stringify(arr)
-    }, function (err, req, resp) {
-        window.location.href = "/results/" + resp["responseJSON"]["uuid"];
-    });
+    document.getElementById("myBtn").addEventListener("click", function(){
+        if (arr.length === 0) {
 
+
+            alert('No Ingredients Inputted. Please Hit Return after typing in 1 ingredient');
+            event.preventDefault();
+            window.history.back();
+            window.location.reload();
+            window.location.reload();
+        }
+
+        else {
+            $.post("/index", {
+                canvas_data: JSON.stringify(arr)
+            }, function (err, req, resp) {
+                window.location.href = "/results/" + resp["responseJSON"]["uuid"];
+            });
+        }
+    });
 
     return {
         init: function () {
